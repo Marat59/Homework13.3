@@ -30,7 +30,7 @@ class Category:
 
     def __len__(self):
         result = 0
-        for product in self.__goods:
+        for product in self.goods:
             result += product.quantity
         return result
 
