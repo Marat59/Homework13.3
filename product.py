@@ -1,9 +1,23 @@
-class Product:
+from abc import ABC, abstractmethod
+
+class MixinRepr:
+    def __init__(self, *args, **kwargs):
+        print(repr(self))
+
+    def __repr__(self):
+        return f'{self.__class__.__name__}, {self.__dict__}'
+
+class Base_Product(ABC):
+    @abstractmethod
+    def new_product(self):
+        pass
+
+class Product(Base_Product, MixinRepr):
     name: str
     description: str
     price: float
     quantity: int
-    colour: int
+    colour: str
 
     def __init__(self, name, description, price, quantity, colour):
         self.name = name
@@ -45,7 +59,7 @@ class Product:
 
 
 
-class Smartphone(Product):
+class Smartphone(Product, MixinRepr):
     power: int
     model: str
     volume: float
@@ -57,7 +71,7 @@ class Smartphone(Product):
         self.volume = volume
 
 
-class Grass(Product):
+class Grass(Product, MixinRepr):
     country: str
     time: float
 
