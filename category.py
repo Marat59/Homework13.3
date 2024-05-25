@@ -21,6 +21,8 @@ class Category:
         return self.__goods
 
     def add_goods(self, product):
+        if product.quantity == 0:
+            raise ValueError ('товар с нулевым количеством не может быть добавлен')
         self.__goods.append(product)
 
     @property
@@ -42,3 +44,11 @@ class Category:
     def add_product(self, product):
         if isinstance(product, Product):
             self.products.append(product)
+
+    def average_price(self, sum_price):
+        for product in self.__goods:
+            sum_price = sum_price + product.price
+        try:
+            return sum_price / len(self.__goods)
+        except ZeroDivisionError:
+            return 0
