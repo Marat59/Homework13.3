@@ -41,9 +41,6 @@ class Category:
     def __str__(self):
         return f'{self.name}, количество продуктов: {len(self)} шт.'
 
-    def add_product(self, product):
-        if isinstance(product, Product):
-            self.products.append(product)
 
     def average_price(self, sum_price):
         for product in self.__goods:
