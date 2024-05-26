@@ -21,9 +21,10 @@ class Category:
         return self.__goods
 
     def add_goods(self, product):
-        if product.quantity == 0:
-            raise ValueError ('товар с нулевым количеством не может быть добавлен')
-        self.__goods.append(product)
+        if isinstance(product, Product):
+            if product.quantity == 0:
+                raise ValueError ('товар с нулевым количеством не может быть добавлен')
+            self.__goods.append(product)
 
     @property
     def get_product(self):
